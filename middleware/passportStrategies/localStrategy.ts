@@ -28,7 +28,7 @@ passport.serializeUser(function (
   user: CustomUser,
   done: (err: any, id?: number) => void
 ) {
-  console.log(JSON.stringify(user) + "SERIAL USDER");
+  console.log(user.id + "inside serialuser");
   done(null, user.id);
 });
 
