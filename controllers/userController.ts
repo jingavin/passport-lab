@@ -1,4 +1,3 @@
-import { json } from "stream/consumers";
 import { userModel, database } from "../models/userModel";
 import { Profile } from "passport-github2";
 
@@ -23,13 +22,13 @@ function isUserValid(user: any, password: string) {
   return user.password === password;
 }
 
-const addUser = (id: number, name: string, email: string, password: string) => {
+const addUser = (id: any, name: string) => {
   const user = database.find((user) => user.id === id);
   if (user) {
     return null;
   }
 
-  const gitUser = { id: id, name: name, email: email, password: password };
+  const gitUser = { id: id, name: name };
 
   database.push(gitUser);
   console.log("in add git user, after the push");

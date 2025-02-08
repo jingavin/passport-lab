@@ -5,7 +5,7 @@ import { forwardAuthenticated } from "../middleware/checkAuth";
 const router = express.Router();
 
 router.get("/login", forwardAuthenticated, (req, res) => {
-  res.render("login");
+  res.render("login", { messages: req.session.messages });
 });
 
 router.post(
@@ -27,7 +27,7 @@ router.get(
   "/github/callback",
   passport.authenticate("github", { failureRedirect: "/login" }),
   function (req, res) {
-    // Successful authentication, redirect home.
+    console.log("we dont hit this i htink");
     res.redirect("/dashboard");
   }
 );

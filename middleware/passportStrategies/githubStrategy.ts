@@ -19,18 +19,13 @@ const githubStrategy: GitHubStrategy = new GitHubStrategy(
     req: Request,
     accessToken: any,
     refreshToken: any,
-    profile: any,
+    profile: Profile,
     // profile: Profile,
     // WHY NO WORK PROFILE?
     done: any
   ) => {
     if (!getUserById(profile.id)) {
-      addUser(
-        profile.id,
-        profile.displayName,
-        profile.profileUrl,
-        profile.provider
-      );
+      addUser(profile.id, profile.displayName);
       //   addUser(profile);
     }
     console.log("IN GITHUBE STRAT");

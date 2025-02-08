@@ -1,4 +1,9 @@
-const database = [
+const database: {
+  id: number;
+  name: string;
+  email?: string;
+  password?: string;
+}[] = [
   {
     id: 1,
     name: "Jimmy Smith",

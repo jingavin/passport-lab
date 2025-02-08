@@ -9,6 +9,8 @@ export const ensureAuthenticated = (
   res: Response,
   next: NextFunction
 ) => {
+  console.log(req.isAuthenticated());
+  console.log(" IN AUTHNETICAED");
   if (req.isAuthenticated()) {
     return next();
   }
