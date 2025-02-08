@@ -1,7 +1,10 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
-import { getUserByEmailIdAndPassword, getUserById} from "../../controllers/userController";
-import { PassportStrategy } from '../../interfaces/index';
+import {
+  getUserByEmailIdAndPassword,
+  getUserById,
+} from "../../controllers/userController";
+import { PassportStrategy } from "../../interfaces/index";
 
 const localStrategy = new LocalStrategy(
   {
@@ -28,7 +31,10 @@ passport.serializeUser(function (user: any, done: any) {
 /*
 FIX ME (types) 😭
 */
-passport.deserializeUser(function (id: any, done: any) {
+// for done create type called user with {id:num, email: string, password: string}
+// 2 interface with the same name will be mergged together, called delcaration merging
+// done looks for user interface which is empty on defualt
+passport.deserializeUser(function (id: number, done: any) {
   let user = getUserById(id);
   if (user) {
     done(null, user);
@@ -38,7 +44,7 @@ passport.deserializeUser(function (id: any, done: any) {
 });
 
 const passportLocalStrategy: PassportStrategy = {
-  name: 'local',
+  name: "local",
   strategy: localStrategy,
 };
 
