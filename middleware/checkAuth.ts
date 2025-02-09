@@ -12,6 +12,8 @@ export const ensureAuthenticated = (
   console.log(req.isAuthenticated());
   console.log(" IN AUTHNETICAED");
   if (req.isAuthenticated()) {
+    console.log("abouce req.user");
+    console.log(req.user);
     return next();
   }
   res.redirect("/auth/login");

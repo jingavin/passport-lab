@@ -11,6 +11,7 @@ export interface CustomUser {
   name: string;
   email?: string;
   password?: string;
+  admin?: boolean;
 }
 
 declare global {

@@ -44,25 +44,6 @@ const addUser = (id: any, name: string) => {
   console.log("in add git user, after the push");
 };
 
-// IM SO LOST OBJECT OBECJET??
-
-// const addUser = (profile: Profile) => {
-//   const user = database.find((user) => user.id === parseInt(profile.id));
-//   if (user) {
-//     return null;
-//   }
-
-//   const gitUser = {
-//     id: parseInt(profile.id),
-//     name: profile.displayName,
-//     email: profile.profileUrl,
-//     password: profile.provider,
-//   };
-
-//   database.push(gitUser);
-//   console.log("in add git user, after the push");
-// };
-
 export {
   getUserByEmailIdAndPassword,
   getUserById,

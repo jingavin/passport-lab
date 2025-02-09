@@ -3,12 +3,14 @@ const database: {
   name: string;
   email?: string;
   password?: string;
+  admin?: boolean;
 }[] = [
   {
     id: 1,
     name: "Jimmy Smith",
     email: "jimmy123@gmail.com",
     password: "jimmy",
+    admin: true,
   },
   {
     id: 2,

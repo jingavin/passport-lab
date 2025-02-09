@@ -1,0 +1,13 @@
+<h2>we on the admin page</h2>
+
+<pre><%= JSON.stringify(sessionArray,   null, 2) %></pre>
+
+<h4>Active sessions: <%= sessionArray.length %></h4>
+<% sessionArray.forEach((session) => { %>
+<p>SessionID: <%= session.sessionId %></p>
+<p>UserID: <%= session.sessionData.passport.user %></p>
+<form action="/admin/revoke" method="post">
+  <input type="hidden" name="sessionId" value="<%= session.sessionId %>" />
+  <button type="submit">Revoke Session</button>
+</form>
+<% }) %>
