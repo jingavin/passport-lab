@@ -13,7 +13,8 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/dashboard",
     failureRedirect: "/auth/login",
-    failureMessage: "error message",
+    failureMessage: true,
+    // failureMessage: "error message",
     /* FIX ME: 😭 failureMsg needed when login fails */
   })
 );
@@ -27,7 +28,6 @@ router.get(
   "/github/callback",
   passport.authenticate("github", { failureRedirect: "/login" }),
   function (req, res) {
-    console.log("we dont hit this i htink");
     res.redirect("/dashboard");
   }
 );

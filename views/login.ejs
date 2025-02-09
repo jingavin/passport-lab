@@ -4,7 +4,9 @@
       <h1 class="mb-3">
         <img src="/secure-icon.png" alt="icon" width="20%" />
       </h1>
-      <% if(messages) { %> <%= messages[0] %> <% } %>
+      <div style="color: red">
+        <% if(messages) { %> <%= messages[messages.length - 1] %> <% } %>
+      </div>
       <h2>Login</h2>
       <form action="/auth/login" method="POST">
         <div class="form-group">

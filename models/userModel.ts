@@ -32,7 +32,8 @@ const userModel = {
     if (user) {
       return user;
     }
-    throw new Error(`Couldn't find user with email: ${email}`);
+    // throw new Error(`Couldn't find user with email: ${email}`);
+    return null;
   },
   /* FIX ME (types) 😭 */
   // DONE ??

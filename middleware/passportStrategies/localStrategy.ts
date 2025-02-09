@@ -3,6 +3,8 @@ import { Strategy as LocalStrategy } from "passport-local";
 import {
   getUserByEmailIdAndPassword,
   getUserById,
+  isUserEmailValid,
+  passwordLookup,
 } from "../../controllers/userController";
 import { PassportStrategy, CustomUser } from "../../interfaces/index";
 
@@ -13,10 +15,27 @@ const localStrategy = new LocalStrategy(
   },
   (email, password, done) => {
     const user = getUserByEmailIdAndPassword(email, password);
+
+    let message = "";
+
+    const passCheck = passwordLookup(password) === password;
+    console.log(passCheck);
+    const emailCheck = isUserEmailValid(email) === email;
+
+    console.log(user?.email);
+    console.log(email);
+    console.log(emailCheck);
+
+    if (emailCheck && !passCheck) {
+      message = "Password incorrect";
+    } else if (passCheck && !emailCheck) {
+      message = `Could not find user: ${email}`;
+    }
+
     return user
       ? done(null, user)
       : done(null, false, {
-          message: "Your login details are not valid. Please try again",
+          message,
         });
   }
 );
